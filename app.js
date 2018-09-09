@@ -1,7 +1,17 @@
+/*
+GAME REQUIREMENTS
+- player must guess a number between min and max
+- player gets a certain number of guesses
+- notify player of guesses remaining
+- notify the player of the correct answer if lost
+- let player choose to play again
+*/
+
+
 // game values
 let min = 1,
     max = 10,
-    winningNum = 2,
+    winningNum = getRandomNum(min, max),
     guessesLeft = 3;
 
 // create variables for ids and classes
@@ -69,6 +79,12 @@ function gameOver(won, msg) {
   guessBtn.className += 'play-again';
 }
 
+// get winning number
+function getRandomNum(min, max) {
+  return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+// set message
 function setMessage(msg, color) {
   message.style.color = color; //
   message.textContent = msg;
