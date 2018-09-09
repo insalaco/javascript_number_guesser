@@ -9,11 +9,19 @@ const guessBtn   = document.querySelector('#guess-btn'),
       guessInput = document.querySelector('#guess-input'),
       message    = document.querySelector('.message'),
       minNum     = document.querySelector('.min-num'),
-      maxNum     = document.querySelector('.max-num');
+      maxNum     = document.querySelector('.max-num'),
+      game       = document.querySelector('#game'); // get parent element for event listener
 
 // assign the text content of span element classes min-num and max-num to variables
 minNum.textContent = min;
 maxNum.textContent = max;
+
+// play again event listener
+game.addEventListener('mousedown', function(e){
+  if(e.target.className === 'play-again'){
+    window.location.reload();
+  }
+}); 
 
 // listen for guess when click #guess-btn
 guessBtn.addEventListener('click', function() {
@@ -55,6 +63,10 @@ function gameOver(won, msg) {
   message.style.color = color;
   // set message
   setMessage(msg);
+
+  // play again
+  guessBtn.value = 'Play Again';
+  guessBtn.className += 'play-again';
 }
 
 function setMessage(msg, color) {
